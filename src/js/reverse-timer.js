@@ -25,6 +25,7 @@ const TIMER = {
 
     this.intervalId = setInterval(() => {
       const diff = deadLine - Date.now();
+      console.log(diff);
 
       if (diff <= 1000) {
         clearInterval(this.intervalId);
