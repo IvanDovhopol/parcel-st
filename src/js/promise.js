@@ -58,18 +58,18 @@
 
 //TODO: Собираю данные из бэкЕнда с помошью конструкции Promis
 
-const fetchPockemonById = id => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res =>
-    res.json()
-  );
-};
+// const fetchPockemonById = id => {
+//   return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res =>
+//     res.json()
+//   );
+// };
 
-fetchPockemonById(4).then(onSuccess).catch(onError);
+// fetchPockemonById(4).then(onSuccess).catch(onError);
 
-function onSuccess(pokemon) {
-  console.log('pokemon => ', pokemon);
-}
+// function onSuccess(pokemon) {
+//   console.log('pokemon => ', pokemon);
+// }
 
-function onError(error) {
-  console.error('ошибка в блоке catch', error);
-}
+// function onError(error) {
+//   console.error('ошибка в блоке catch', error);
+// }
