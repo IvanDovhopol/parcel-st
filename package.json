@@ -1,11 +1,11 @@
 {
-  "name": "parcel-st",
+  "name": "parcel-js",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://IvanDovhopol.github.io/parcel-st",
+  "homepage": "https://IvanDovhopol.github.io/parcel-js",
   "scripts": {
-    "start": "parcel src/*.html --port 1111",
-    "build": "parcel build src/*.html --public-url /parcel-st/"
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /parcel-js/"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
   "dependencies": {
     "date-fns": "^2.29.3",
     "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.5"
+    "notiflix": "^3.2.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
