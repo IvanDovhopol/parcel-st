@@ -1,5 +1,7 @@
 // TODO: получаю данные с бэкенда и превращаю в размертку
 
+const BASE_URL = 'https://jsonplaceholder.typicode.com';
+
 const refs = {
   btn: document.querySelector('.js-btn'),
   list: document.querySelector('.user-list'),
@@ -11,20 +13,29 @@ const searchParams = new URLSearchParams({
   _page: 1,
 });
 
-const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
+const options = {
+  headers: {
+    Accept: 'application/json',
+  },
+};
+
+const url = `${BASE_URL}/users?${searchParams}`;
 
 refs.btn.addEventListener('click', () => {
   fetchUsers().then(renderUserlist).catch(console.error);
 });
 
-function fetchUsers() {
-  return fetch(url, { Accept: 'application/json' }).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
+const fetchUsers = async () => {
+  const usersIds = [1, 2, 3, 4, 5];
+
+  const arrOfPromises = usersIds.map(async userId => {
+    const response = await fetch(`${BASE_URL}/users/${userId}`);
     return response.json();
   });
-}
+
+  const user = await Promise.all(arrOfPromises);
+  return user;
+};
 
 function renderUserlist(users) {
   const markup = users
@@ -43,13 +54,3 @@ function renderUserlist(users) {
   refs.list.innerHTML = markup;
   console.log(users);
 }
-
-//TODO: practice работы с бекендом? покемоны
-
-// import pokemonCardTpl from '../templates/pokemon-card.hbs';
-// console.log(pokemonCardTpl);
-
-// fetch('https://pokeapi.co/api/v2/pokemon/1')
-//   .then(response => response.json())
-//   .then(console.log)
-//   .catch(error => console.error(error));
