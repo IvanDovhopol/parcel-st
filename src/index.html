@@ -7,10 +7,28 @@
   </head>
   <body>
     <ul>
-      <li><a href="./timer.html">timer</a></li>
-      <li><a href="./reverse-timer.html">reverse-timer</a></li>
-      <li><a href="./promise.html">promise</a></li>
-      <li><a href="./http-st.html">http-запросы</a></li>
+      <!-- <li><a href="./timer.html">timer</a></li> -->
+      <!-- <li><a href="./reverse-timer.html">reverse-timer</a></li> -->
+      <!-- <li><a href="./promise.html">promise</a></li> -->
+      <!-- <li><a href="./http-st.html">http-запросы</a></li> -->
+
+      <section class="gallery-section">
+        <div class="container">
+          <form class="search-form js-search-form">
+            <input type="text" name="query" class="search-input" />
+            <button type="submit" class="search-btn">
+              search <span class="material-icons">search</span>
+            </button>
+          </form>
+          <ul class="gallery js-gallery list"></ul>
+
+          <button type="button" class="load-more js-more is-hidden">
+            Load more
+          </button>
+        </div>
+      </section>
+
+      <script type="module" src="./index.js"></script>
     </ul>
   </body>
 </html>
