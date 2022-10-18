@@ -1,24 +1,25 @@
-const BASE_URL = 'https://api.unsplash.com';
-const CLIENT_ID = 'U429LRjvlq8j84fGgwRm6DT8zfU6mGDvoZHBhR1os8c';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://api.unsplash.com';
+axios.defaults.headers.common['Authorization'] =
+  'Client-ID U429LRjvlq8j84fGgwRm6DT8zfU6mGDvoZHBhR1os8c';
 
 export default class UnsplashApi {
   #page = 1;
   #query = '';
   #totalPages = 0;
-  #perPage = 10;
+  #perPage = 30;
+  #params = {
+    params: {
+      per_page: 30,
+    },
+  };
 
-  getPhotos() {
-    const url = `${BASE_URL}/search/photos?page=${this.#page}&query=${
-      this.#query
-    }&client_id=${CLIENT_ID}&per_page=${this.#perPage}`;
+  async getPhotos() {
+    const url = `/search/photos?page=${this.#page}&query=${this.#query}`;
+    const { data } = await axios.get(url, this.#params);
 
-    return fetch(url).then(r => {
-      if (!r.ok) {
-        throw new Error(r.status);
-      }
-
-      return r.json();
-    });
+    return data;
   }
 
   get query() {
